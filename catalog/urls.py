@@ -1,22 +1,16 @@
 from django.urls import path
 from . import views
-# from django.conf.urls import url
 
-# urlpatterns = [
-#     path('', views.index, name='index'),
-# ]
-# urlpatterns = [
-#     path('', views.index, name='index'),
-#     path('books/', views.BookListView.as_view(), name='books'),
-# ]
 urlpatterns = [
     path('', views.index, name='index'),
     path('books/', views.BookListView.as_view(), name='books'),
     path('book/<int:pk>', views.BookDetailView.as_view(), name='book-detail'),
-]
-urlpatterns += [
-    path(r'mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
+    path('mybooks/', views.LoanedBooksByUserListView.as_view(), name='my-borrowed'),
+    path('all-borrowed/', views.AllLoanedBooksListView.as_view(), name='all-borrowed'),  # Убедитесь, что эта строка есть
     path('authors/', views.AuthorListView.as_view(), name='authors'),
     path('author/<int:pk>/', views.AuthorDetailView.as_view(), name='author-detail'),
-
+    path('book/<uuid:pk>/renew/', views.renew_book_librarian, name='renew-book-librarian'),
+    path('author/create/', views.AuthorCreate.as_view(), name='author-create'),
+    path('author/<int:pk>/update/', views.AuthorUpdate.as_view(), name='author-update'),
+    path('author/<int:pk>/delete/', views.AuthorDelete.as_view(), name='author-delete'),
 ]
