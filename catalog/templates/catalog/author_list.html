@@ -4,6 +4,7 @@
     <h1>Author List</h1>
 
     {% if author_list %}
+    <a href="{% url 'author-create' %}">Create author</a>
     <ul>
 
       {% for author in author_list %}

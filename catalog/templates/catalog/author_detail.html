@@ -6,7 +6,6 @@
 
   {% if perms.catalog.delete_author %}
     <a href="{% url 'author-delete' author.pk %}">Delete author</a> |
-    <a href="{% url 'author-update' author.pk %}">Update author</a>
   {% endif %}
 
   <div style="margin-left:20px;margin-top:20px">
